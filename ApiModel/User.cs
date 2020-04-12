@@ -3,15 +3,17 @@
 namespace ApiModel
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
-    public class User
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("[user]")]public class User
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
-        private string Lastname { get; set; }
-        private DateTime Birthday { get; set; }
-        private string Address { get; set; }
+        [Key]
+        public Int64 Id { get; set; }
+        public string Name { get; set; }
+        public string Lastname { get; set; }
+        public DateTime Birthday { get; set; }
+        public string Address { get; set; }
 
     }
 }

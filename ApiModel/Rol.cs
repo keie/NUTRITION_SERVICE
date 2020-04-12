@@ -4,11 +4,13 @@ namespace ApiModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Text;
     public class Rol
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
-        private string Description { get; set; }
+        [Key]
+        public Int64 Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

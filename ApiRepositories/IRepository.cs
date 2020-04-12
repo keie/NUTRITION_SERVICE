@@ -2,6 +2,7 @@
 
 namespace ApiRepositories
 {
+    using System;
     using System.Collections.Generic;
     public interface IRepository<T> where T:class
     {
@@ -9,6 +10,6 @@ namespace ApiRepositories
         bool Update(T entity);
         int Insert(T entity);
         IEnumerable<T> GetList();
-        T GetById(int id);
+        T GetById(Int64 id);
     }
 }

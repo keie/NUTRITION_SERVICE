@@ -14,7 +14,7 @@ namespace ApiDataAccess
 
         public Repository(string _connectionString)
         {
-            SqlMapperExtensions.TableNameMapper = (type) => { return $"{type.Name}"; };
+            SqlMapperExtensions.TableNameMapper = (type) => { return $"[{type.Name}]"; };
             this._connectionString = _connectionString;
         }
         public bool Delete(T entity)
@@ -25,11 +25,11 @@ namespace ApiDataAccess
             }
         }
 
-        public T GetById(int id)
+        public T GetById(Int64 id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Get<T>(id);
+                return connection.Get<T>((Int64)id);
             }
         }
 
