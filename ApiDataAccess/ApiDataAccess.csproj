@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiRepositories\ApiRepositories.csproj" />
     <ProjectReference Include="..\ApiUnitWork\ApiUnitWork.csproj" />
+    <ProjectReference Include="..\Encryption\Encryption.csproj" />
   </ItemGroup>
 
 </Project>
