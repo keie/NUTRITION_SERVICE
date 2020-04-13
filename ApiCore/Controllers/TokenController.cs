@@ -7,6 +7,7 @@ namespace ApiCore.Controllers
     using Authentication;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using System.Collections.Generic;
 
     [Route("api/token")]
     public class TokenController : Controller
@@ -24,9 +25,19 @@ namespace ApiCore.Controllers
         [HttpPost]
         public JsonWebToken Post([FromBody]User userLogin)
         {
+            List<Rol> Roles;
             try
             {
                 var user = _unitOfWork.IUser.ValidateUser(userLogin.Username, userLogin.Password);
+                Roles = new List<Rol>();
+                var listRoles = _unitOfWork.IRolUser.GetList();
+                foreach(var element in listRoles)
+                {
+                    if (user.Id == element.IdUser)
+                    {
+                        Roles.Add(_unitOfWork.IRol.GetById(element.IdRol));
+                    }
+                }user.Roles = Roles;
                 if (user == null)
                 {
                     throw new UnauthorizedAccessException();

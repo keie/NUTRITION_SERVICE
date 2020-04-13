@@ -7,8 +7,11 @@ namespace ApiCore.Authentication
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Security.Cryptography;
+    using System.Text.Json;
     using ApiModel;
     using Microsoft.IdentityModel.Tokens;
+  
+
     public class JwtProvider : ITokenProvider
     {
         private RsaSecurityKey _key;
@@ -30,7 +33,7 @@ namespace ApiCore.Authentication
             var identity = new ClaimsIdentity(new List<Claim>()
             {
                 new Claim(ClaimTypes.Name,$"{user.Name}{user.Lastname}"),
-                //new Claim(ClaimTypes.Role,user.Roles),
+                new Claim(ClaimTypes.Role,JsonSerializer.Serialize(user.Roles)),
                 new Claim(ClaimTypes.PrimarySid,user.Id.ToString())
             }, "User");
             SecurityToken token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
