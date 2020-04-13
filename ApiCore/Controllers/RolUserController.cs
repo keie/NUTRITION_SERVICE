@@ -22,25 +22,39 @@ namespace ApiCore.Controllers
         [Route("{id:int}")]
         public IActionResult GetById(Int64 id)
         {
-            var obj = _unitOfWork.IRolUser.GetById(id);
-            obj.User= _unitOfWork.IUser.GetById(obj.IdUser);
-            obj.Rol= _unitOfWork.IRol.GetById(obj.IdRol);
-            return Ok(obj);
+            try
+            {
+                var obj = _unitOfWork.IRolUser.GetById(id);
+                if (obj == null)
+                {
+                    throw new Exception("Does not exist register");
+                }
+                obj.User = _unitOfWork.IUser.GetById(obj.IdUser);
+                obj.Rol = _unitOfWork.IRol.GetById(obj.IdRol);
+                return Ok(obj);
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         [HttpGet]
-       
         public IActionResult GetList()
         {
-            var obj = _unitOfWork.IRolUser.GetList();
-            List<RolUser> listRolUser= new List<RolUser>();
-            foreach (var element in obj)
+            try
             {
-                element.User= _unitOfWork.IUser.GetById(element.IdUser);
-                element.Rol= _unitOfWork.IRol.GetById(element.IdRol);
-                listRolUser.Add(element);
+                var obj = _unitOfWork.IRolUser.GetList();
+                List<RolUser> listRolUser = new List<RolUser>();
+                foreach (var element in obj)
+                {
+                    element.User = _unitOfWork.IUser.GetById(element.IdUser);
+                    element.Rol = _unitOfWork.IRol.GetById(element.IdRol);
+                    listRolUser.Add(element);
+                }
+                return Ok(listRolUser);
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
             }
-            
-            return Ok(listRolUser);
         }
     }
 }
