@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiCore.Authentication;
 using ApiDataAccess;
 using ApiUnitWork;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,7 +34,21 @@ namespace ApiCore
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
                 Configuration.GetConnectionString("local")
                 ));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var tokenProvider = new JwtProvider("issuer", "audience", "profexorrr_20000");
+            services.AddSingleton<ITokenProvider>(tokenProvider);
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = tokenProvider.GetValidationParameters();
+                });
+            services.AddAuthorization(auth => {
+                auth.DefaultPolicy = new AuthorizationPolicyBuilder()
+                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .RequireAuthenticatedUser()
+                .Build();
+            });
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 

@@ -34,7 +34,6 @@ namespace ApiDataAccess
             var parameters = new DynamicParameters();
             parameters.Add("@username", username);
             parameters.Add("@password", password);
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 return connection.QueryFirstOrDefault<User>(

@@ -8,5 +8,7 @@ namespace ApiCore.Authentication
         public string Token_Type { get; set; } = "bearer";
         public float Expires_in { get; set; }
         public string RefreshToken { get; set; }
+
+        public string Message { get; set; }
     }
 }
