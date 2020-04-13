@@ -1,2 +1,2 @@
 # NUTRITION_SERVICE
-API to offer service to the prochet of the communty servcie
+API to offer services to the project of the community service
