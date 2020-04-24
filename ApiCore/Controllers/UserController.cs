@@ -6,6 +6,7 @@ using ApiModel;
 using ApiUnitWork;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace ApiCore.Controllers {
     [Route ("api/User")]
     public class UserController : Controller {
@@ -31,7 +32,7 @@ namespace ApiCore.Controllers {
             foreach (var user in listUsers) {
                 List<Rol> listRoles = new List<Rol> ();
                 foreach (var rolUser in listRolUser) {
-                    if (user.Id == rolUser.IdUser) {
+                    if (user.id == rolUser.IdUser) {
                         listRoles.Add (_unitOfWork.IRol.GetById (rolUser.IdRol));
                     }
                 }
@@ -44,11 +45,12 @@ namespace ApiCore.Controllers {
         public IActionResult GetList(){
             var users=_unitOfWork.IUser.GetList();
             List<User> listUsersCharged = new List<User> ();
-            foreach(var user in users){
+            try{
+                foreach(var user in users){
                 List<Rol> listRoles = new List<Rol> ();
                 var roles=(_unitOfWork.IRolUser.GetList());
                 foreach(var rol in roles){
-                    if(user.Id==rol.IdUser){
+                    if(user.id==rol.IdUser){
                         listRoles.Add((_unitOfWork.IRol.GetById(rol.IdRol)));
                     }
                 }
@@ -56,6 +58,19 @@ namespace ApiCore.Controllers {
                 listUsersCharged.Add(user);
             }
             return Ok(listUsersCharged);
+            }catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpPost]
+        [Route("insert")]
+        public IActionResult Insert([FromBody] User user){
+            if(!ModelState.IsValid)return BadRequest("not valid");
+            try{
+                return Ok(_unitOfWork.IUser.Insert(user));
+            }catch(Exception e){
+                return BadRequest(e.Message);
+            }
         }
     }
 }

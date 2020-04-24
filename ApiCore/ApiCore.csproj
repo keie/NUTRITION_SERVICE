@@ -24,5 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiDataAccess\ApiDataAccess.csproj"/>
     <ProjectReference Include="..\ApiUnitWork\ApiUnitWork.csproj"/>
+    <ProjectReference Include="..\DTO\DTO.csproj"/>
   </ItemGroup>
 </Project>

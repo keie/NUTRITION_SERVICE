@@ -28,12 +28,12 @@ namespace ApiCore.Controllers
             List<Rol> Roles;
             try
             {
-                var user = _unitOfWork.IUser.ValidateUser(userLogin.Username, userLogin.Password);
+                var user = _unitOfWork.IUser.ValidateUser(userLogin.username, userLogin.password);
                 Roles = new List<Rol>();
                 var listRoles = _unitOfWork.IRolUser.GetList();
                 foreach(var element in listRoles)
                 {
-                    if (user.Id == element.IdUser)
+                    if (user.id == element.IdUser)
                     {
                         Roles.Add(_unitOfWork.IRol.GetById(element.IdRol));
                     }
@@ -56,9 +56,6 @@ namespace ApiCore.Controllers
                 };
                 return (token);
             }
-           
         }
-
-
     }
 }

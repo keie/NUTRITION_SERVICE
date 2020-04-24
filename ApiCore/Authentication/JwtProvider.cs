@@ -31,9 +31,9 @@ namespace ApiCore.Authentication
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             var identity = new ClaimsIdentity(new List<Claim>()
             {
-                new Claim(ClaimTypes.Name,$"{user.Name}{user.Lastname}"),
+                new Claim(ClaimTypes.Name,$"{user.name}{user.lastname}"),
                 new Claim(ClaimTypes.Role,JsonSerializer.Serialize(user.Roles)),
-                new Claim(ClaimTypes.PrimarySid,user.Id.ToString())
+                new Claim(ClaimTypes.PrimarySid,user.id.ToString())
             }, "User");
             SecurityToken token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
             {

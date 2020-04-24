@@ -10,13 +10,19 @@ namespace ApiModel
     [Table("[user]")]public class User
     {
         [Key]
-        public Int64 Id { get; set; }
-        public string Name { get; set; }
-        public string Lastname { get; set; }
-        public DateTime Birthday { get; set; }
-        public string Address { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public Int64 id { get; set; }
+        [Column("name")]
+        public string name { get; set; }
+        [Column("lastname")]
+        public string lastname { get; set; }
+        [Column("birthday")]
+        public DateTime birthday { get; set; }
+        [Column("address")]
+        public string address { get; set; }
+        [Column("username")]
+        public string username { get; set; }
+        [Column("password")]
+        public string password { get; set; }
         public virtual List<Rol> Roles { get; set; }
 
     }
