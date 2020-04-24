@@ -32,17 +32,30 @@ namespace ApiCore.Controllers {
                 List<Rol> listRoles = new List<Rol> ();
                 foreach (var rolUser in listRolUser) {
                     if (user.Id == rolUser.IdUser) {
-                        Console.WriteLine ("inside if");
-                        Console.WriteLine (rolUser.IdRol);
                         listRoles.Add (_unitOfWork.IRol.GetById (rolUser.IdRol));
-                        Console.WriteLine (listRoles[0].Name);
                     }
                 }
                 user.Roles = listRoles;
                 listUsersCharged.Add (user);
-                //listRoles.Clear ();
             }
             return Ok (listUsersCharged);
+        }
+        [HttpGet]
+        public IActionResult GetList(){
+            var users=_unitOfWork.IUser.GetList();
+            List<User> listUsersCharged = new List<User> ();
+            foreach(var user in users){
+                List<Rol> listRoles = new List<Rol> ();
+                var roles=(_unitOfWork.IRolUser.GetList());
+                foreach(var rol in roles){
+                    if(user.Id==rol.IdUser){
+                        listRoles.Add((_unitOfWork.IRol.GetById(rol.IdRol)));
+                    }
+                }
+                user.Roles=listRoles;
+                listUsersCharged.Add(user);
+            }
+            return Ok(listUsersCharged);
         }
     }
 }

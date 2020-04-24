@@ -37,6 +37,8 @@ namespace ApiCore {
                     options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = tokenProvider.GetValidationParameters ();
                 });
+        
+
             services.AddAuthorization (auth => {
                 auth.DefaultPolicy = new AuthorizationPolicyBuilder ()
                     .AddAuthenticationSchemes (JwtBearerDefaults.AuthenticationScheme)
@@ -54,17 +56,18 @@ namespace ApiCore {
                 app.UseDeveloperExceptionPage ();
                 IdentityModelEventSource.ShowPII = true;
             } else {
+                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts ();
             }
             // CORS
             // https://docs.asp.net/en/latest/security/cors.html
+            app.UseHttpsRedirection ();
             app.UseCors (builder =>
-                builder.WithOrigins ("https://localhost:4200", "http://www.myclientserver.com")
+                builder.WithOrigins ("http://localhost:4200", "http://localhost:4200")
                 .AllowAnyHeader ()
                 .AllowAnyMethod ());
-            app.UseHttpsRedirection ();
-
+            
             app.UseAuthentication ();
             app.UseStaticFiles ();
             app.UseCookiePolicy ();

@@ -16,7 +16,7 @@ namespace ApiCore {
 
         public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
             WebHost.CreateDefaultBuilder (args)
-            //.UseSetting ("https_port", "5000")
-            .UseStartup<Startup> ();
+            .UseSetting ("https_port", "443")
+            .UseStartup<Startup>();
     }
 }

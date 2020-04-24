@@ -20,9 +20,8 @@ namespace ApiCore.Authentication
         private string _audience;
         public JwtProvider(string issuer, string audience, string keyName)
         {
-            var parameters = new CspParameters() { KeyContainerName = keyName };
-            var provider = new RSACryptoServiceProvider(2048, parameters);
-            _key = new RsaSecurityKey(provider);
+            RSACryptoServiceProvider provider = new RSACryptoServiceProvider(2048);
+           _key = new RsaSecurityKey(provider);
             _algoritm = SecurityAlgorithms.RsaSha256Signature;
             _issuer = issuer;
             _audience = audience;
