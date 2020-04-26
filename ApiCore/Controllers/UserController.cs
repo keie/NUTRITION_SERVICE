@@ -65,12 +65,14 @@ namespace ApiCore.Controllers {
         [HttpPost]
         [Route("insert")]
         public IActionResult Insert([FromBody] User user){
-            if(!ModelState.IsValid)return BadRequest("not valid");
+            Console.WriteLine("service on");
+            if(!ModelState.IsValid)return BadRequest(ModelState);
             try{
                 return Ok(_unitOfWork.IUser.Insert(user));
             }catch(Exception e){
                 return BadRequest(e.Message);
             }
         }
+        
     }
 }
