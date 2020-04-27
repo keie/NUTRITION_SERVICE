@@ -73,6 +73,12 @@ namespace ApiCore.Controllers {
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPut]
+        [Route("update")]
+        public IActionResult Update([FromBody] User user){
+            return Ok(_unitOfWork.IUser.Update(user));
+        }
         
     }
 }
