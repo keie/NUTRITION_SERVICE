@@ -77,7 +77,15 @@ namespace ApiCore.Controllers {
         [HttpPut]
         [Route("update")]
         public IActionResult Update([FromBody] User user){
-            return Ok(_unitOfWork.IUser.Update(user));
+            Console.WriteLine("service on update");
+            if(!ModelState.IsValid)return BadRequest(ModelState);
+            try{
+               
+                return Ok(_unitOfWork.IUser.Update(user));
+            }catch(Exception e){
+                return BadRequest(e.Message);
+            }
+            
         }
         
     }
