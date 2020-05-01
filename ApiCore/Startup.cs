@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-
-using ApiCore.Authentication;
-using ApiDataAccess;
-using ApiUnitWork;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Logging;
+﻿
 
 namespace ApiCore {
+    using System;
+    using System.Collections.Generic;
+
+    using ApiCore.Authentication;
+    using ApiDataAccess;
+    using ApiUnitWork;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.IdentityModel.Logging;
     public class Startup {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;
