@@ -1,9 +1,6 @@
 ﻿namespace ApiDataAccess {
     using System.Collections.Generic;
     using System.Data.SqlClient;
-    using System.Linq;
-    using System.Text;
-    using System;
     using ApiCore.Encrypt;
     using ApiModel;
     using ApiRepositories;
@@ -54,7 +51,25 @@
                 return connection.Query<User> (
                     "dbo.[CustomerPagedList]", parameters,
                     commandType : System.Data.CommandType.StoredProcedure);
+            }
+        }
 
+        public string EncryptPass(string password){
+            string passFormat = "SHA512";
+            string saltKey = "";
+            _encryptionService = new Encrypt ();
+            var passwordEncrypt = _encryptionService.CreatePasswordHash (password, saltKey, passFormat);
+            return passwordEncrypt;
+        }
+
+        public int DeleteUser(int id){
+            var parameters=new DynamicParameters();
+            parameters.Add("@id",id);
+            using(var connection=new SqlConnection(_connectionString)){
+                return connection.Execute(
+                    "dbo.[deleteUser]",parameters,
+                    commandType:System.Data.CommandType.StoredProcedure
+                );
             }
         }
     }
