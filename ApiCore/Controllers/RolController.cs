@@ -1,25 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ApiModel;
-using ApiUnitWork;
-using Microsoft.AspNetCore.Mvc;
+
 
 namespace ApiCore.Controllers{
 
+    
+    using Microsoft.AspNetCore.Mvc;
+    using ApiBussinessLogic.Interfaces;
+
     [Route("api/Rol")]
     public class RolController:Controller{
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRolLogic _logic;
         
-        public RolController(IUnitOfWork unitOfWork){
-            _unitOfWork=unitOfWork;
+        public RolController(IRolLogic logic){
+            _logic=logic;
         }
 
         [HttpGet]
         public IActionResult GetList(){
 
-            return Ok(_unitOfWork.IRol.GetList());
+            return Ok(_logic.GetList());
         }
 
     }

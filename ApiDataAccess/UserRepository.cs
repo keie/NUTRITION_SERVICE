@@ -1,7 +1,7 @@
 ﻿namespace ApiDataAccess {
     using System.Collections.Generic;
     using System.Data.SqlClient;
-    using ApiCore.Encrypt;
+    using Encryption.Encrypt;
     using ApiModel;
     using ApiRepositories;
     using Dapper;

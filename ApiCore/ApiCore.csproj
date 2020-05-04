@@ -23,7 +23,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiDataAccess\ApiDataAccess.csproj"/>
+    <ProjectReference Include="..\ApiBussinessLogic\ApiBussinessLogic.csproj"/>
     <ProjectReference Include="..\ApiUnitWork\ApiUnitWork.csproj"/>
     <ProjectReference Include="..\Encryption\Encryption.csproj" />
+     <ProjectReference Include="..\JWT\JWT.csproj" />
   </ItemGroup>
 </Project>

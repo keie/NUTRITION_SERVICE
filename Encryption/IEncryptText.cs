@@ -1,6 +1,6 @@
 ﻿
 
-namespace ApiCore.Encrypt
+namespace Encryption.IEncryptText
 {
     public interface IEncryptText
     {

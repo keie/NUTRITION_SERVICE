@@ -1,6 +1,6 @@
 ﻿
 
-namespace ApiCore.Authentication
+namespace JWT.Authentication
 {
     using System;
     using System.Collections.Generic;

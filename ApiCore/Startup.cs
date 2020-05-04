@@ -1,10 +1,7 @@
 ﻿
 
 namespace ApiCore {
-    using System;
-    using System.Collections.Generic;
-
-    using ApiCore.Authentication;
+    using JWT.Authentication;
     using ApiDataAccess;
     using ApiUnitWork;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,6 +13,8 @@ namespace ApiCore {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Logging;
+    using ApiBussinessLogic.Interfaces;
+    using ApiBussinessLogic.Implementations;
     public class Startup {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;
@@ -25,8 +24,12 @@ namespace ApiCore {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
-            services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
-                Configuration.GetConnectionString ("cloud")
+                services.AddTransient<IRolLogic,RolLogic>();
+                services.AddTransient<IUserLogic,UserLogic>();
+                services.AddTransient<IRolUserLogic,RolUserLogic>();
+                services.AddTransient<ITokenLogic,TokenLogic>();
+                services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
+                Configuration.GetConnectionString ("local")
             ));
             var tokenProvider = new JwtProvider ("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider> (tokenProvider);
@@ -60,9 +63,9 @@ namespace ApiCore {
             }
             // CORS
             // https://docs.asp.net/en/latest/security/cors.html
-            app.UseHttpsRedirection ();
+            //app.UseHttpsRedirection ();
             app.UseCors (builder =>
-                builder.WithOrigins ("http://localhost:4200", "http://localhost:4200")
+                builder.WithOrigins ("http://localhost:4200", "https://fundacion-ddaa7.web.app/")
                 .AllowAnyHeader ()
                 .AllowAnyMethod ());
             
