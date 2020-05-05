@@ -11,7 +11,7 @@ namespace ApiCore.Controllers {
     [Route ("api/User")]
     public class UserController : Controller {
         
-        private readonly IUserLogic _logic;
+        private readonly IUserLogic _logic ;
         
         public UserController (IUserLogic logic) {
             _logic = logic;
