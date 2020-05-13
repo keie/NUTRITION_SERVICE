@@ -28,8 +28,10 @@ namespace ApiCore {
                 services.AddTransient<IUserLogic,UserLogic>();
                 services.AddTransient<IRolUserLogic,RolUserLogic>();
                 services.AddTransient<ITokenLogic,TokenLogic>();
+                services.AddTransient<IPersonalReferenceLogic,PersonalReferenceLogic>();
                 services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
-                Configuration.GetConnectionString ("local")
+                    //Configuration.GetConnectionString ("local")
+                    Configuration.GetConnectionString ("local")
             ));
             var tokenProvider = new JwtProvider ("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider> (tokenProvider);

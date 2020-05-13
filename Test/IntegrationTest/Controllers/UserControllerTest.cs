@@ -18,19 +18,13 @@ namespace Test.IntegrationTest
 
 
     [TestClass]
-    public class UserControllerTest
+    public class UserControllerTest:EnvironmentTest
     {
-        private readonly TestServer _server;
-        private readonly HttpClient _client;
+       
         private string Uri = "api/User";
 
-        public UserControllerTest()
-        {
-            _server = new TestServer(WebHost.CreateDefaultBuilder()
-                .UseSetting("https_port", "443")
-                .UseStartup<Startup>());
-            _client = _server.CreateClient();
-        }
+       
+        
 
         [TestMethod]
         public async Task GetResponseMethodGetListShouldBeFull()

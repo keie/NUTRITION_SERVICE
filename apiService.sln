@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBussinessLogic", "ApiBus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT", "JWT\JWT.csproj", "{E8468BAA-7FFD-4DB0-AF4B-3B476888B1F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{F534F044-E07B-4485-A5AC-0147B4A4A106}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F534F044-E07B-4485-A5AC-0147B4A4A106}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

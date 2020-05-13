@@ -1,3 +1,5 @@
+using System;
+
 namespace ApiBussinessLogic.Interfaces{
     
     using ApiModel;
@@ -12,6 +14,6 @@ namespace ApiBussinessLogic.Interfaces{
         string Encrypt(User user);
         IEnumerable<User> GetList();
 
-        User GetById(int id);
+        User GetById(Int64 id);
     }
 }

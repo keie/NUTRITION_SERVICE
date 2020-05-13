@@ -11,5 +11,7 @@ namespace ApiUnitWork
         IRolRepository IRol { get; }
         IRolUserRepository IRolUser { get; }
         IUserRepository IUser { get; }
+        
+        IPersonalReferenceRepository IPersonalReference { get; }
     }
 }

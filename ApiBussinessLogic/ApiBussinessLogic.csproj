@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
    
-    <ProjectReference Include="..\ApiUnitWork\ApiUnitWork.csproj"/>
+    <ProjectReference Include="..\ApiUnitWork\ApiUnitWork.csproj" />
     <ProjectReference Include="..\ApiModel\ApiModel.csproj" />
     <ProjectReference Include="..\JWT\JWT.csproj" />
     

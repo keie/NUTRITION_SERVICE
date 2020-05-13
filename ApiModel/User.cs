@@ -23,6 +23,10 @@ namespace ApiModel
         public string username { get; set; }
         [Column("password")]
         public string password { get; set; }
+        
+        [Column("gender")]
+        public char gender { get; set; }
+        
         public Byte boolDelete {get;set;}
         public virtual List<Rol> Roles { get; set; }
 

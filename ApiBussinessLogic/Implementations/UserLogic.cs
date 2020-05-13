@@ -54,8 +54,10 @@ namespace ApiBussinessLogic.Implementations{
             return(_unitOfWork.IUser.EncryptPass(user.password));
         }
 
-        public User GetById(int id){
-            return (_unitOfWork.IUser.GetById(id));
+        public User GetById(Int64 id)
+        {
+            var req = _unitOfWork.IUser.GetById(id);
+            return (req);
         }
 
         public IEnumerable<User> GetList(){

@@ -15,12 +15,15 @@ namespace ApiDataAccess
         public IRolUserRepository IRolUser { get; set; }
 
         public IUserRepository IUser { get; set; }
+        
+        public IPersonalReferenceRepository IPersonalReference { get; set; }
 
         public UnitOfWork(string connectionString)
         {
             IRol = new RolRepository(connectionString);
             IUser=new UserRepository(connectionString);
             IRolUser=new RolUserRepository(connectionString);
+            IPersonalReference=new PersonalReferenceRepository(connectionString);
         }
     }
 }

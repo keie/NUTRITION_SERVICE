@@ -33,7 +33,7 @@ namespace ApiCore.Controllers {
             }
         }
 
-
+        //readyOnTestIntegration
         [HttpGet]
         public IActionResult GetList(){
             try{
