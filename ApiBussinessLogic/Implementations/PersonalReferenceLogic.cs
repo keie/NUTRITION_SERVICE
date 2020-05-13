@@ -29,5 +29,15 @@ namespace ApiBussinessLogic.Implementations
         {
             return (_unitOfWork.IPersonalReference.Insert(obj));
         }
+
+        public bool Update(PersonalReference obj)
+        {
+            return (_unitOfWork.IPersonalReference.Update(obj));
+        }
+
+        public int DeletePersonalReference(int id)
+        {
+            return (_unitOfWork.IPersonalReference.DeletePersonalReference(id));
+        }
     }
 }

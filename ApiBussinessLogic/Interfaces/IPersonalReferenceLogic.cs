@@ -10,5 +10,9 @@ namespace ApiBussinessLogic.Interfaces
         
         int Insert(PersonalReference obj);
 
+        bool Update(PersonalReference obj);
+
+        public int DeletePersonalReference(int id);
+
     }
 }
