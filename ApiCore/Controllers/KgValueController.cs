@@ -1,26 +1,24 @@
-
-
-using System.Collections;
+using System;
+using ApiBussinessLogic.Interfaces;
+using ApiModel;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ApiCore.Controllers
 {
-    using System;
-    using ApiModel;
-    using Microsoft.AspNetCore.Mvc;
-    using ApiBussinessLogic.Interfaces;
-    
-    [Route("api/personalReference")]
-    public class PersonalReferenceController:Controller
+    [Route("api/kgvalue")]
+    public class KgValueController:Controller
     {
-        private readonly IPersonalReferenceLogic _logic;
+        private readonly IKgValueLogic _logic;
 
-        public PersonalReferenceController(IPersonalReferenceLogic logic)
+        public KgValueController(IKgValueLogic logic)
         {
             _logic = logic;
         }
+
         [HttpGet]
         public IActionResult GetList()
         {
+            //if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
                 return Ok(_logic.GetList());
@@ -29,7 +27,20 @@ namespace ApiCore.Controllers
             {
                 return BadRequest(e.Message);
             }
-            
+        }
+
+        [HttpPost]
+        [Route("insert")]
+        public IActionResult Insert([FromBody] KgValue obj)
+        {
+            try
+            {
+                return Ok(_logic.Insert(obj));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         [HttpGet]
         [Route("{id:int}")]
@@ -44,25 +55,9 @@ namespace ApiCore.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-        [HttpPost]
-        [Route("insert")]
-        public IActionResult Insert([FromBody] PersonalReference pr)
-        {
-            if(!ModelState.IsValid)return BadRequest(ModelState);
-            try
-            {
-                return Ok(_logic.Insert(pr));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] PersonalReference obj)
+        public IActionResult Update([FromBody] KgValue obj)
         {
             try
             {
@@ -72,14 +67,14 @@ namespace ApiCore.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }  
+        }
         [HttpDelete]
         [Route("delete/{id:int}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                return Ok(_logic.DeletePersonalReference(id));
+                return Ok(_logic.DeleteKgValue(id));
             }
             catch (Exception e)
             {

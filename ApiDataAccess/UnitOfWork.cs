@@ -17,6 +17,8 @@ namespace ApiDataAccess
         public IUserRepository IUser { get; set; }
         
         public IPersonalReferenceRepository IPersonalReference { get; set; }
+        
+        public IKgValueRepostitory IKgValue { get; set; }
 
         public UnitOfWork(string connectionString)
         {
@@ -24,6 +26,7 @@ namespace ApiDataAccess
             IUser=new UserRepository(connectionString);
             IRolUser=new RolUserRepository(connectionString);
             IPersonalReference=new PersonalReferenceRepository(connectionString);
+            IKgValue=new KgValueRepository(connectionString);
         }
     }
 }

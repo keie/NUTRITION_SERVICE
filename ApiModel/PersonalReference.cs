@@ -11,7 +11,6 @@ namespace ApiModel
        public byte greaterThan { get; set; }
        public byte smallerThan { get; set; }
        public char gender { get; set; }
-       
        public byte boolDelete { get; set; }
     }
 }
