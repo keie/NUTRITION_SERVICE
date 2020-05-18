@@ -15,5 +15,7 @@ namespace ApiUnitWork
         IPersonalReferenceRepository IPersonalReference { get; }
         
         IKgValueRepostitory IKgValue { get; }
+        
+        ISizeValueRepository ISizeValue { get; }
     }
 }

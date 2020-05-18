@@ -30,6 +30,7 @@ namespace ApiCore {
                 services.AddTransient<ITokenLogic,TokenLogic>();
                 services.AddTransient<IPersonalReferenceLogic,PersonalReferenceLogic>();
                 services.AddTransient<IKgValueLogic,KgValueLogic>();
+                services.AddTransient<ISizeValueLogic,SizeValueLogic>();
                 services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
                     //Configuration.GetConnectionString ("local")
                     Configuration.GetConnectionString ("local")

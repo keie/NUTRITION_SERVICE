@@ -33,8 +33,8 @@ namespace Test.IntegrationTest
         {
             //Arrange
             KgValue kgVal=new KgValue();
-            kgVal.firstValue = 12.33;
-            kgVal.secondValue = 11.11;
+            kgVal.firstValue = 12.33F;
+            kgVal.secondValue = 11.11F;
             var body = JsonConvert.SerializeObject(kgVal);
             //Act
             var response = await _client.PostAsync(Uri + "/insert",
@@ -59,9 +59,10 @@ namespace Test.IntegrationTest
         {
             //Arrange
             KgValue kgVal=new KgValue();
-            kgVal.id = 1;
-            kgVal.firstValue = 10.00;
-            kgVal.secondValue = 0.11;
+            kgVal.id = 2;
+            kgVal.firstValue = 15.00F;
+            kgVal.secondValue = 0.11F;
+            kgVal.boolDelete = 0;
             var body = JsonConvert.SerializeObject(kgVal);
             
             //Act
@@ -77,7 +78,7 @@ namespace Test.IntegrationTest
         {
             //Arrange
             //Act
-            var response = await _client.DeleteAsync(Uri + "/delete/1"); //carefully with ID
+            var response = await _client.DeleteAsync(Uri + "/delete/2"); //carefully with ID
 
             //var content = response.Content.ReadAsStringAsync();
             //Assert
