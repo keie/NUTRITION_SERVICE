@@ -18,5 +18,26 @@ namespace ApiBussinessLogic.Implementations
         {
             return (_unitOfWork.ISizeValue.GetList());
         }
+        
+        
+        public SizeValue GetById(int id)
+        {
+            return (_unitOfWork.ISizeValue.GetById(id));
+        }
+
+        public int Insert(SizeValue obj)
+        {
+            return (_unitOfWork.ISizeValue.Insert(obj));
+        }
+
+        public bool Update(SizeValue obj)
+        {
+            return (_unitOfWork.ISizeValue.Update(obj));
+        }
+
+        public int DeleteSizeValue(int id)
+        {
+            return (_unitOfWork.ISizeValue.DeleteSizeValue(id));
+        }
     }
 }
