@@ -19,5 +19,7 @@ namespace ApiUnitWork
         ISizeValueRepository ISizeValue { get; }
         
         IStatusNutritionGeneralRepository ISnutrition { get; }
+        
+        IGradeRepository IGrade { get; }
     }
 }

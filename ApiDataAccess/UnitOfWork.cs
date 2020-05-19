@@ -24,6 +24,8 @@ namespace ApiDataAccess
         
         public IStatusNutritionGeneralRepository ISnutrition { get; set; }
 
+        public IGradeRepository IGrade { get; }
+
         public UnitOfWork(string connectionString)
         {
             IRol = new RolRepository(connectionString);
@@ -33,6 +35,7 @@ namespace ApiDataAccess
             IKgValue=new KgValueRepository(connectionString);
             ISizeValue=new SizeValueRepository(connectionString);
             ISnutrition=new StatusNutritionGeneralRepository(connectionString);
+            IGrade=new GradeRepository(connectionString);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace ApiCore {
                 services.AddTransient<IKgValueLogic,KgValueLogic>();
                 services.AddTransient<ISizeValueLogic,SizeValueLogic>();
                 services.AddTransient<IStatusNutritionGeneralLogic,StatusNutritionGeneralLogic>();
+                services.AddTransient<IGradeLogic,GradeLogic>();
                 services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
                     //Configuration.GetConnectionString ("local")
                     Configuration.GetConnectionString ("local")
