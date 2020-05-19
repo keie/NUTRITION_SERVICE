@@ -17,7 +17,7 @@ namespace ApiDataAccess
             SqlMapperExtensions.TableNameMapper = (type) => { return $"[{type.Name}]"; };
             this._connectionString = _connectionString;
         }
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
             using (var connection =new SqlConnection(_connectionString))
             {
@@ -25,7 +25,7 @@ namespace ApiDataAccess
             }
         }
 
-        public T GetById(Int64 id)
+        public virtual T GetById(Int64 id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -33,7 +33,7 @@ namespace ApiDataAccess
             }
         }
 
-        public IEnumerable<T> GetList()
+        public virtual IEnumerable<T> GetList()
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -41,7 +41,7 @@ namespace ApiDataAccess
             }
         }
 
-        public int Insert(T entity)
+        public virtual int Insert(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -49,7 +49,7 @@ namespace ApiDataAccess
             }
         }
 
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {

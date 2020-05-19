@@ -31,6 +31,7 @@ namespace ApiCore {
                 services.AddTransient<IPersonalReferenceLogic,PersonalReferenceLogic>();
                 services.AddTransient<IKgValueLogic,KgValueLogic>();
                 services.AddTransient<ISizeValueLogic,SizeValueLogic>();
+                services.AddTransient<IStatusNutritionGeneralLogic,StatusNutritionGeneralLogic>();
                 services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
                     //Configuration.GetConnectionString ("local")
                     Configuration.GetConnectionString ("local")

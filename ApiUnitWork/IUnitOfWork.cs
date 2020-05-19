@@ -17,5 +17,7 @@ namespace ApiUnitWork
         IKgValueRepostitory IKgValue { get; }
         
         ISizeValueRepository ISizeValue { get; }
+        
+        IStatusNutritionGeneralRepository ISnutrition { get; }
     }
 }

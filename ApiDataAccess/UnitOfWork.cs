@@ -21,6 +21,8 @@ namespace ApiDataAccess
         public IKgValueRepostitory IKgValue { get; set; }
         
         public ISizeValueRepository ISizeValue { get; set; }
+        
+        public IStatusNutritionGeneralRepository ISnutrition { get; set; }
 
         public UnitOfWork(string connectionString)
         {
@@ -30,6 +32,7 @@ namespace ApiDataAccess
             IPersonalReference=new PersonalReferenceRepository(connectionString);
             IKgValue=new KgValueRepository(connectionString);
             ISizeValue=new SizeValueRepository(connectionString);
+            ISnutrition=new StatusNutritionGeneralRepository(connectionString);
         }
     }
 }
