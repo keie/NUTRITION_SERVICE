@@ -26,6 +26,8 @@ namespace ApiBussinessLogic.Implementations
                 List<KgValue> listKgs=new List<KgValue>();
                 var pReferenceList = _unitOfWork.IPersonalReference.GetList();
                 List<PersonalReference> listpReferences=new List<PersonalReference>();
+                var gradeList = _unitOfWork.IGrade.GetList();
+                List<Grade> listGrades = new List<Grade>();
                 foreach (var registery in sizeValList)
                 {
                     if(registery.id==registerx.idSizeVal){listSizes.Add(_unitOfWork.ISizeValue.GetById(registery.id));}
@@ -38,9 +40,15 @@ namespace ApiBussinessLogic.Implementations
                 {
                     if(registera.id==registerx.idPreference){listpReferences.Add(_unitOfWork.IPersonalReference.GetById(registera.id));}
                 }
+
+                foreach (var registerb in gradeList)
+                {
+                    if(registerb.id==registerx.idGrade){listGrades.Add(_unitOfWork.IGrade.GetById(registerb.id));}
+                }
                 registerx.sizeValues = listSizes;
                 registerx.kgValues = listKgs;
                 registerx.pReferences = listpReferences;
+                registerx.grades = listGrades;
                 listCharged.Add(registerx);
             }
             return (listCharged);
