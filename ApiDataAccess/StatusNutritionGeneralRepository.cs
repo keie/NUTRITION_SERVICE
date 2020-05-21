@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using ApiModel;
 using ApiRepositories;
+using Dapper;
 
 namespace ApiDataAccess
 {
@@ -10,7 +13,18 @@ namespace ApiDataAccess
         {
             
         }
-        
-        
+
+        public int DeleteStatusNutritionGeneral(int id)
+        {
+            var parameters=new DynamicParameters();
+            parameters.Add("@id",id);
+            
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Execute("[DeleteStatusNutritionGeneral]",
+                    parameters,
+                    commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
     }
 }

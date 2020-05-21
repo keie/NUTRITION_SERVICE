@@ -53,5 +53,24 @@ namespace ApiBussinessLogic.Implementations
             }
             return (listCharged);
         }
+
+       /* public int ValidateInsertValues(int idPreference, int idGrade, int idSizeValue, int idKgValue)
+        {
+            return (_unitOfWork.ISnutrition.ValidateInsertValues(idPreference, idGrade, idSizeValue, idKgValue));
+        }*/
+       public int Insert(StatusNutritionGeneral obj)
+       {
+           return (_unitOfWork.ISnutrition.Insert(obj));
+       }
+
+       public StatusNutritionGeneral GetById(int id)
+       {
+           return (_unitOfWork.ISnutrition.GetById(id));
+       }
+
+       public int DeleteStatusNutritionGeneral(int id)
+       {
+           return (_unitOfWork.ISnutrition.DeleteStatusNutritionGeneral(id));
+       }
     }
 }
