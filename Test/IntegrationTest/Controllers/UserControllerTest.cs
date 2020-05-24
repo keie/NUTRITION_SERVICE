@@ -1,5 +1,7 @@
 
 
+using System;
+using System.Collections.Generic;
 using System.Text;
 using ApiModel;
 using Newtonsoft.Json;
@@ -58,6 +60,35 @@ namespace Test.IntegrationTest
             //Assert
             //FluentAssertion
             content.Result.Should().Be(valueExpected);
+        }
+        
+        [TestMethod]
+        public async Task PostInsertUserSuccessFully()
+        {
+            //Arrange
+            User user=new User();
+            List<Rol> roles=new List<Rol>();
+            user.name = "Jhon Testing";
+            user.lastname = "Doe testing";
+            user.birthday = DateTime.Now;
+            user.address = "pza testing";
+            user.username = "utest@utest.com";
+            user.password = "12345678";
+            user.gender = 'M';
+            user.height = 1.75F;
+            user.weight = 89.65F;
+            user.boolDelete = 0;
+            user.Roles = roles;
+            
+            var body = JsonConvert.SerializeObject(user);
+            
+            //Act
+            var response = await _client.PostAsync(Uri + "/insert",
+                new StringContent(body, Encoding.UTF8, "application/json"));
+
+            var content = response.Content.ReadAsStringAsync();
+            //Assert
+            Assert.IsTrue(int.Parse(content.Result)>=1);
         }
     }
 }

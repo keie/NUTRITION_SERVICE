@@ -27,6 +27,9 @@ namespace ApiModel
         [Column("gender")]
         public char gender { get; set; }
         
+        public float  height { get; set; }
+        public float weight { get; set; }
+        
         public Byte boolDelete {get;set;}
         public virtual List<Rol> Roles { get; set; }
 
