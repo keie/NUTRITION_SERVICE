@@ -21,5 +21,7 @@ namespace ApiUnitWork
         IStatusNutritionGeneralRepository ISnutrition { get; }
         
         IGradeRepository IGrade { get; }
+        
+        IStatusNutritionImcRepository IStatusImc { get; }
     }
 }

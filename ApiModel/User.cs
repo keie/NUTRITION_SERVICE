@@ -30,6 +30,7 @@ namespace ApiModel
         public float  height { get; set; }
         public float weight { get; set; }
         
+        public string nroDoc { get; set; }
         public Byte boolDelete {get;set;}
         public virtual List<Rol> Roles { get; set; }
 

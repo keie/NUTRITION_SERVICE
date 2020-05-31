@@ -25,6 +25,8 @@ namespace ApiDataAccess
         public IStatusNutritionGeneralRepository ISnutrition { get; set; }
 
         public IGradeRepository IGrade { get; }
+        
+        public IStatusNutritionImcRepository IStatusImc { get; set; }
 
         public UnitOfWork(string connectionString)
         {
@@ -36,6 +38,7 @@ namespace ApiDataAccess
             ISizeValue=new SizeValueRepository(connectionString);
             ISnutrition=new StatusNutritionGeneralRepository(connectionString);
             IGrade=new GradeRepository(connectionString);
+            IStatusImc=new StatusNutritionImcRepository(connectionString);
         }
     }
 }
