@@ -23,5 +23,6 @@ namespace ApiUnitWork
         IGradeRepository IGrade { get; }
         
         IStatusNutritionImcRepository IStatusImc { get; }
+        IAgeRepository IAge { get; }
     }
 }

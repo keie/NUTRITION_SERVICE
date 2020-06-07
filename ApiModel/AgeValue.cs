@@ -2,12 +2,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ApiModel
 {
-    public class StatusNutritionImc
+    public class AgeValue
     {
         [Key]
         public int id { get; set; }
-        public float firstValue { get; set; }
-        public float secondValue { get; set; }
+        public int firstValue { get; set; }
+        public int secondValue { get; set; }
         public byte boolDelete { get; set; }
     }
 }

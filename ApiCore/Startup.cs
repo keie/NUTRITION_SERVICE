@@ -34,6 +34,7 @@ namespace ApiCore {
                 services.AddTransient<IStatusNutritionGeneralLogic,StatusNutritionGeneralLogic>();
                 services.AddTransient<IGradeLogic,GradeLogic>();
                 services.AddTransient<IStatusNutritionImcLogic,StatusNutritionLogic>();
+                services.AddTransient<IAgeValueLogic,AgeLogic>();
                 services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
                     //Configuration.GetConnectionString ("local")
                     Configuration.GetConnectionString ("local")
