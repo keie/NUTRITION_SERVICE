@@ -37,7 +37,7 @@ namespace ApiCore {
                 services.AddTransient<IAgeValueLogic,AgeLogic>();
                 services.AddSingleton<IUnitOfWork> (option => new UnitOfWork (
                     //Configuration.GetConnectionString ("local")
-                    Configuration.GetConnectionString ("local")
+                    Configuration.GetConnectionString ("sandbox")
             ));
             var tokenProvider = new JwtProvider ("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider> (tokenProvider);
